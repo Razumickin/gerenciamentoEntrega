@@ -6,9 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="42de655f-cdd2-4cb4-8979-35f0c6bb0caf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/components/DefaultLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/layouts/DefaultLayout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/router.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/router.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/views/Deliveries.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/views/Deliveries.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/views/Delivery.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/views/Delivery.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/app/Http/Controllers/Api/EntregaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Http/Controllers/Api/EntregaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core-api/app/Services/EntregaService.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Services/EntregaService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core-api/app/Services/RastreamentoService.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Services/RastreamentoService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/bootstrap/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,22 +169,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "desenvolvimento",
-    "last_opened_file_path": "C:/Users/razum/Documents/gerenciamentoEntrega",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;desenvolvimento&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/razum/Documents/gerenciamentoEntrega&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner configuration_file="$PROJECT_DIR$/core-api/phpunit.xml" scope="XML" use_alternative_configuration_file="true" />
@@ -202,7 +208,8 @@
       <updated>1709177728416</updated>
       <workItem from="1709177730057" duration="5504000" />
       <workItem from="1709220742769" duration="627000" />
-      <workItem from="1709221379194" duration="74081000" />
+      <workItem from="1709221379194" duration="75436000" />
+      <workItem from="1709316473816" duration="5420000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,7 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import Deliveries from "./views/Deliveries.jsx";
 import NotFound from "./views/NotFound.jsx";
-import DefaultLayout from "./components/DefaultLayout.jsx";
+import DefaultLayout from "./layouts/DefaultLayout.jsx";
 import Delivery from "./views/Delivery.jsx";
 
 const router = createBrowserRouter([
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
                 element: <Deliveries />
             },
             {
-                path: '/deliveries/:id',
+                path: '/delivery/:id',
                 element: <Delivery />
             },
             {
