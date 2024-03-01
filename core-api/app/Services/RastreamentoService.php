@@ -19,16 +19,11 @@ class RastreamentoService
         $rastreamento->save();
     }
 
-    public function GetRastreamentosByEntregaId(string $entrega_id):array
+    public function GetRastreamentoByEntregaIdOrderByData(string $entrega_id):RastreamentoEntity
     {
-        $listaRastreamentos = array();
-        $rastreamentos = Rastreamento::where('entrega_id', '=', $entrega_id)->get();
+        $ultimoRastreamento = Rastreamento::where('entrega_id', '=', $entrega_id)->orderBy('data', 'desc')->first();
+        $rastreamento = RastreamentoEntity::ConvertModelToEntity($ultimoRastreamento);
 
-        for($index = 0; $index < count($rastreamentos); $index++)
-        {
-            $listaRastreamentos[$index] = RastreamentoEntity::ConvertModelToEntity($rastreamentos[$index]);
-        }
-
-        return $listaRastreamentos;
+        return $rastreamento;
     }
 }

@@ -50,7 +50,7 @@ class EntregaService
             $listaEntregas[$index] = EntregaEntity::ConvertModelToEntity($entregas[$index]);
             $listaEntregas[$index]->destinatario = DestinatarioFacade::GetDestinarioByCpf($entregas[$index]->destinatario_cpf);
             $listaEntregas[$index]->transportadora = TransportadoraFacade::GetTransportadoraByIdTransportadora($entregas[$index]->transportadora_id);
-            $listaEntregas[$index]->rastreamentos = RastreamentoFacade::GetRastreamentosByEntregaId($entregas[$index]->entrega_id);
+            $listaEntregas[$index]->ultimoRastreamento = RastreamentoFacade::GetRastreamentoByEntregaIdOrderByData($entregas[$index]->entrega_id);
         }
 
         return $listaEntregas;

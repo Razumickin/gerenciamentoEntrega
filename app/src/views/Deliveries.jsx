@@ -11,6 +11,7 @@ export default function Deliveries(){
     const getDeliveries = () => {
         axiosClient.get('/deliveries')
             .then(({ data }) => {
+                console.log(data.data);
                 setDeliveries(data.data)
             })
     }
@@ -62,14 +63,14 @@ export default function Deliveries(){
                     </thead>
                     <tbody>
                         {deliveries.map(del => (
-                            <tr key={del._id}>
-                                <td>{del._destinatario._nome}</td>
-                                <td>{del._destinatario._cpf}</td>
-                                <td>{del._destinatario._endereco}</td>
-                                <td>{del._volumes}</td>
-                                <td>{del._remetente._nome}</td>
-                                <td>{del._id_transportadora}</td>
-                                <td>{del._destinatario._endereco}</td>
+                            <tr key={del.entrega_id}>
+                                <td>{del.destinatario.nome}</td>
+                                <td>{del.destinatario.cpf}</td>
+                                <td>{del.destinatario.endereco}, {del.destinatario.cep}, {del.destinatario.estado}, {del.destinatario.pais}</td>
+                                <td>{del.volumes}</td>
+                                <td>{del.remetente}</td>
+                                <td>{del.transportadora.fantasia}</td>
+                                <td>{del.ultimoRastreamento.mensagem}</td>
                             </tr>
                         ))}
                     </tbody>
