@@ -22,7 +22,7 @@ class DeliveriesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cpf' => 'required'
+            'cpf' => 'required|string|min:11|max:14'
         ];
     }
 }

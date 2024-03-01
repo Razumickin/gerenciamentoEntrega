@@ -1,7 +1,20 @@
-import {useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import axiosClient from "../axios-client.js";
 
 export default function Deliveries(){
+    const [deliveries, setDeliveries] = useState([]);
+
+    useEffect(() => {
+        getDeliveries();
+    }, [])
+
+    const getDeliveries = () => {
+        axiosClient.get('/deliveries')
+            .then(({ data }) => {
+                setDeliveries(data.data)
+            })
+    }
+
     const cpfRef = useRef();
     const onSubmit = (ev)=> {
         ev.preventDefault()
@@ -10,9 +23,12 @@ export default function Deliveries(){
             cpf: cpfRef.current.value
         }
 
-        axiosClient.post('/getDeliveries', payload)
+        axiosClient.post('/deliveries', payload)
             .then(({data}) => {
                 console.log(data);
+            }).catch(error => {
+                const response = error.response
+                console.log(response.data.errors);
             })
     }
 
@@ -45,15 +61,17 @@ export default function Deliveries(){
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Maria Oliveira</td>
-                        <td>355.956.060-88</td>
-                        <td>Avenida Principal, 456, Rio de Janeiro, Brasil</td>
-                        <td>1</td>
-                        <td>Lojas B - Suprimentos Alimentos</td>
-                        <td>SWIFT CARGO - 12.345.678/9000-01</td>
-                        <td>ENTREGA REALIZADA - 17/11/2023 11:20</td>
-                    </tr>
+                        {deliveries.map(del => (
+                            <tr key={del._id}>
+                                <td>{del._destinatario._nome}</td>
+                                <td>{del._destinatario._cpf}</td>
+                                <td>{del._destinatario._endereco}</td>
+                                <td>{del._volumes}</td>
+                                <td>{del._remetente._nome}</td>
+                                <td>{del._id_transportadora}</td>
+                                <td>{del._destinatario._endereco}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

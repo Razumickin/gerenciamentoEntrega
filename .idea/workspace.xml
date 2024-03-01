@@ -5,22 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42de655f-cdd2-4cb4-8979-35f0c6bb0caf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/axios-client.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/components/DefaultLayout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/router.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/views/Deliveries.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/views/NotFound.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core-api/app/Http/Controllers/Api/DeliveriesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core-api/app/Http/Requests/DeliveriesRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/vite.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/App.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/assets/react.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Domains/Entities/Destinatario.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Domains/Entities/Entrega.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Domains/Entities/Rastreamento.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Domains/Entities/Remetente.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Domains/Entities/Transportadora.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Domains/Facades/DestinatarioFacade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Domains/Facades/EntregaFacade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Domains/Facades/RastreamentoFacade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Domains/Facades/RemetenteFacade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Domains/Facades/TransportadoraFacede.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Http/Controllers/Api/EntregaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Models/Destinatario.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Models/Entrega.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Models/Rastreamento.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Models/Remetente.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Models/Transportadora.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Services/DestinarioService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Services/EntregaService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Services/RastreamentoService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Services/RemetenteService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/app/Services/TransportadoraService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/database/migrations/2024_03_01_052821_create_entregas_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core-api/database/migrations/2024_03_01_053249_create_rastreamentos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/axios-client.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/axios-client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/router.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/router.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/views/Deliveries.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/views/Deliveries.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/app/Http/Controllers/Api/DeliveriesController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/app/Http/Requests/DeliveriesRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Http/Requests/DeliveriesRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/app/Models/User.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/bootstrap/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/database/factories/UserFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/database/migrations/2024_03_01_052018_create_destinatarios_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/database/migrations/2014_10_12_100000_create_password_reset_tokens_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/database/migrations/2024_03_01_051701_create_transportadoras_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/database/migrations/2024_03_01_052511_create_remetentes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/views/Delivery.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/resources/css/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/resources/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/resources/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/resources/views/welcome.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core-api/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,8 +64,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JSX File" />
         <option value="JavaScript File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -162,6 +191,9 @@
       <path value="$PROJECT_DIR$/core-api/vendor/nikic/php-parser" />
     </include_path>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -185,6 +217,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -211,7 +244,7 @@
       <updated>1709177728416</updated>
       <workItem from="1709177730057" duration="5504000" />
       <workItem from="1709220742769" duration="627000" />
-      <workItem from="1709221379194" duration="14940000" />
+      <workItem from="1709221379194" duration="40528000" />
     </task>
     <servers />
   </component>
