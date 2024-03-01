@@ -47,7 +47,10 @@ class EntregaService
 
         for($index = 0; $index < count($entregas); $index++)
         {
-            $listaEntregas[$index] = $entregas[$index];
+            $listaEntregas[$index] = EntregaEntity::ConvertModelToEntity($entregas[$index]);
+            $listaEntregas[$index]->destinatario = DestinatarioFacade::GetDestinarioByCpf($entregas[$index]->destinatario_cpf);
+            $listaEntregas[$index]->transportadora = TransportadoraFacade::GetTransportadoraByIdTransportadora($entregas[$index]->transportadora_id);
+            $listaEntregas[$index]->rastreamentos = RastreamentoFacade::GetRastreamentosByEntregaId($entregas[$index]->entrega_id);
         }
 
         return $listaEntregas;
@@ -68,8 +71,13 @@ class EntregaService
             {
                 if($this->ValidateDataFromApi($data))
                 {
-                    $data->_transportadora = TransportadoraFacade::GetTransportadoraByIdTransportadora($data->_id_transportadora);
-                    $this->CreateEntrega(EntregaEntity::ConvertStdClassToEntity($data));
+                    $entrega = Entrega::where('entrega_id', '=', $data->_id)->first();
+
+                    if($entrega === null)
+                    {
+                        $data->_transportadora = TransportadoraFacade::GetTransportadoraByIdTransportadora($data->_id_transportadora);
+                        $this->CreateEntrega(EntregaEntity::ConvertStdClassToEntity($data));
+                    }
                 }
             }
         }

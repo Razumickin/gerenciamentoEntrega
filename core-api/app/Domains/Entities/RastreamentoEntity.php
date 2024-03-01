@@ -2,20 +2,30 @@
 
 namespace App\Domains\Entities;
 
+use App\Models\Rastreamento;
 use stdClass;
 
 class RastreamentoEntity
 {
-    public string $entregaId;
     public string $mensagem;
     public string $data;
 
-    public static function ConvertToEntity(stdClass $rastreamento):RastreamentoEntity
+    public static function ConvertStdClassToEntity(stdClass $rastreamento):RastreamentoEntity
     {
         $rastreamentoEntity = new RastreamentoEntity();
 
         $rastreamentoEntity->mensagem = $rastreamento->message;
         $rastreamentoEntity->data = date('Y-m-d h:i:s', strtotime($rastreamento->date));;
+
+        return $rastreamentoEntity;
+    }
+
+    public static function ConvertModelToEntity(Rastreamento $rastreamento):RastreamentoEntity
+    {
+        $rastreamentoEntity = new RastreamentoEntity();
+
+        $rastreamentoEntity->mensagem = $rastreamento->mensagem;
+        $rastreamentoEntity->data = $rastreamento->data;;
 
         return $rastreamentoEntity;
     }

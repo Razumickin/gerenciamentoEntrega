@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Domains\Entities\DestinatarioEntity;
 use App\Models\Destinatario;
-use Illuminate\Database\Eloquent\Collection;
 
 class DestinarioService
 {
@@ -26,8 +25,8 @@ class DestinarioService
 
     public function GetDestinarioByCpf(string $cpf):DestinatarioEntity
     {
-        $destinatario = Destinatario::whereCpf($cpf)->first();
-        return $this->ConvertFromCollectionToDestinatarioEntity($destinatario);
+        $destinatario = Destinatario::where('cpf', '=', $cpf)->first();
+        return DestinatarioEntity::ConvertModelToEntity($destinatario);
     }
 
     public function CheckDestinatarioByCpf(string $cpf):bool
@@ -40,21 +39,5 @@ class DestinarioService
         }
 
         return true;
-    }
-
-    private function ConvertFromCollectionToDestinatarioEntity(Collection $destinatario):DestinatarioEntity
-    {
-        $destinarioEntity = new DestinatarioEntity();
-
-        $destinarioEntity->nome = $destinatario->nome;
-        $destinarioEntity->cpf = $destinatario->cpf;
-        $destinarioEntity->endereco = $destinatario->endereco;
-        $destinarioEntity->estado = $destinatario->estado;
-        $destinarioEntity->cep = $destinatario->cep;
-        $destinarioEntity->pais = $destinatario->pais;
-        $destinarioEntity->latitude = $destinatario->latitude;
-        $destinarioEntity->longitude = $destinatario->longitude;
-
-        return $destinarioEntity;
     }
 }

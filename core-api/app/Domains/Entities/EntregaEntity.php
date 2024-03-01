@@ -2,6 +2,7 @@
 
 namespace App\Domains\Entities;
 
+use App\Models\Entrega;
 use stdClass;
 
 class EntregaEntity
@@ -26,8 +27,19 @@ class EntregaEntity
 
         for($index = 0; $index < count($entrega->_rastreamento); $index++)
         {
-            $entregaEntity->rastreamentos[$index] = RastreamentoEntity::ConvertToEntity($entrega->_rastreamento[$index]);
+            $entregaEntity->rastreamentos[$index] = RastreamentoEntity::ConvertStdClassToEntity($entrega->_rastreamento[$index]);
         }
+
+        return $entregaEntity;
+    }
+
+    public static function ConvertModelToEntity(Entrega $entrega):EntregaEntity
+    {
+        $entregaEntity = new EntregaEntity();
+
+        $entregaEntity->entrega_id = $entrega->entrega_id;
+        $entregaEntity->volumes = $entrega->volumes;
+        $entregaEntity->remetente = $entrega->remetente;
 
         return $entregaEntity;
     }

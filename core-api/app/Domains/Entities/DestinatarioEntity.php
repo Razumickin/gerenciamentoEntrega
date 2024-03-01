@@ -2,6 +2,7 @@
 
 namespace App\Domains\Entities;
 
+use App\Models\Destinatario;
 use stdClass;
 
 class DestinatarioEntity
@@ -27,6 +28,22 @@ class DestinatarioEntity
         $destinatarioEntity->pais = $destinatario->_pais;
         $destinatarioEntity->latitude = $destinatario->_geolocalizao->_lat;
         $destinatarioEntity->longitude = $destinatario->_geolocalizao->_lng;
+
+        return $destinatarioEntity;
+    }
+
+    public static function ConvertModelToEntity(Destinatario $destinatario):DestinatarioEntity
+    {
+        $destinatarioEntity = new DestinatarioEntity();
+
+        $destinatarioEntity->nome = $destinatario->nome;
+        $destinatarioEntity->cpf = $destinatario->cpf;
+        $destinatarioEntity->endereco = $destinatario->endereco;
+        $destinatarioEntity->estado = $destinatario->estado;
+        $destinatarioEntity->cep = $destinatario->cep;
+        $destinatarioEntity->pais = $destinatario->pais;
+        $destinatarioEntity->latitude = $destinatario->latitude;
+        $destinatarioEntity->longitude = $destinatario->longitude;
 
         return $destinatarioEntity;
     }

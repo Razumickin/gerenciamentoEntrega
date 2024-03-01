@@ -5,27 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42de655f-cdd2-4cb4-8979-35f0c6bb0caf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core-api/app/Helpers/ApiConnectionHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Domains/Entities/Destinatario.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Domains/Entities/DestinatarioEntity.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Domains/Entities/Entrega.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Domains/Entities/EntregaEntity.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Domains/Entities/Rastreamento.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Domains/Entities/RastreamentoEntity.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Domains/Entities/Remetente.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Domains/Entities/Transportadora.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Domains/Entities/TransportadoraEntity.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Domains/Facades/TransportadoraFacede.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Domains/Facades/TransportadoraFacade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Models/Destinatario.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Models/Destinatario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Models/Entrega.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Models/Entrega.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Models/Rastreamento.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Models/Rastreamento.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Models/Remetente.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Models/Transportadora.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Models/Transportadora.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/app/Domains/Entities/DestinatarioEntity.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Domains/Entities/DestinatarioEntity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/app/Domains/Entities/EntregaEntity.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Domains/Entities/EntregaEntity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core-api/app/Domains/Entities/RastreamentoEntity.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Domains/Entities/RastreamentoEntity.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core-api/app/Services/DestinarioService.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Services/DestinarioService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core-api/app/Services/EntregaService.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Services/EntregaService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core-api/app/Services/RastreamentoService.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Services/RastreamentoService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Services/RemetenteService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/app/Services/TransportadoraService.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/app/Services/TransportadoraService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/database/migrations/2024_03_01_052511_create_remetentes_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/database/migrations/2024_03_01_052821_create_entregas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/database/migrations/2024_03_01_052821_create_entregas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core-api/database/migrations/2024_03_01_053249_create_rastreamentos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/core-api/database/migrations/2024_03_01_053249_create_rastreamentos_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +205,7 @@
       <updated>1709177728416</updated>
       <workItem from="1709177730057" duration="5504000" />
       <workItem from="1709220742769" duration="627000" />
-      <workItem from="1709221379194" duration="69996000" />
+      <workItem from="1709221379194" duration="72788000" />
     </task>
     <servers />
   </component>
