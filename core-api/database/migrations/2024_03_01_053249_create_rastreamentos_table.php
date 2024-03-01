@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('mensagem');
             $table->dateTimeTz('data');
 
-            $table->unsignedBigInteger('entrega_id');
-            $table->foreign('entrega_id')->references('id')->on('entregas');
+            $table->string('entrega_id');
+            $table->foreign('entrega_id')->references('entrega_id')->on('entregas');
         });
     }
 

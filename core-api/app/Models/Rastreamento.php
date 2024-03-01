@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Rastreamento extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 }

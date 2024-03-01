@@ -2,20 +2,33 @@
 
 namespace App\Services;
 
-use App\Domains\Entities\Rastreamento;
+use App\Domains\Entities\RastreamentoEntity;
+use App\Models\Rastreamento;
+use Illuminate\Database\Eloquent\Collection;
 
 class RastreamentoService
 {
-    private Rastreamento $rastreamento;
-
-    public function SetRastreamento(Rastreamento $rastreamento):void
+    public function CreateRastreamento(RastreamentoEntity $rastreamentoEntity, string $entrega_id):void
     {
-        $this->rastreamento = $rastreamento;
+        $rastreamento = new Rastreamento();
+
+        $rastreamento->mensagem = $rastreamentoEntity->mensagem;
+        $rastreamento->data = $rastreamentoEntity->data;
+        $rastreamento->entrega_id = $entrega_id;
+
+        $rastreamento->save();
     }
 
-    public function GetRastreamentosByEntrega():array
+    public function GetRastreamentosByEntregaId(string $entregaId):array
     {
-        $rastreamentos = ['index', 'rastreamento:obj'];
+        $listaRastreamentos = array();
+        $rastreamentos = Rastreamento::whereEntregaId($entregaId);
+
+        for($index = 0; $index < count($rastreamentos); $index++)
+        {
+            $listaRastreamentos[$index] = $this->ConvertFromCollectionToDestinatarioEntity($rastreamentos[$index]);
+        }
+
         return $rastreamentos;
     }
 }

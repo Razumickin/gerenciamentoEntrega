@@ -14,16 +14,14 @@ return new class extends Migration
         Schema::create('entregas', function (Blueprint $table) {
             $table->id();
             $table->string('entrega_id')->unique();
-            $table->integer ('volume');
+            $table->integer ('volumes');
+            $table->string('remetente');
 
-            $table->unsignedBigInteger('transportadora_id');
-            $table->foreign('transportadora_id')->references('id')->on('transportadoras');
+            $table->string('transportadora_id');
+            $table->foreign('transportadora_id')->references('transportadora_id')->on('transportadoras');
 
-            $table->unsignedBigInteger('remetente_id');
-            $table->foreign('remetente_id')->references('id')->on('remetentes');
-
-            $table->unsignedBigInteger('destinatario_id');
-            $table->foreign('destinatario_id')->references('id')->on('destinatarios');
+            $table->string('destinatario_cpf');
+            $table->foreign('destinatario_cpf')->references('cpf')->on('destinatarios');
         });
     }
 

@@ -2,47 +2,99 @@
 
 namespace App\Services;
 
-use App\Domains\Entities\Destinatario;
-use App\Domains\Entities\Entrega;
+use App\Domains\Entities\DestinatarioEntity;
+use App\Domains\Entities\EntregaEntity;
+use App\Domains\Entities\RastreamentoEntity;
+use App\Domains\Entities\RemetenteEntity;
+use App\Domains\Entities\TransportadoraEntity;
+use App\Domains\Facades\DestinatarioFacade;
+use App\Domains\Facades\RastreamentoFacade;
+use App\Domains\Facades\TransportadoraFacade;
+use App\Helpers\ApiConnectionHelper;
+use App\Models\Entrega;
+use App\Models\Remetente;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Database\Eloquent\Collection;
+use stdClass;
 
 class EntregaService
 {
-    private Entrega $entrega;
     private string $apiUrl = 'https://run.mocky.io/v3/6334edd3-ad56-427b-8f71-a3a395c5a0c7';
 
-    public function SetEntrega(Entrega $entrega):void
+    public function CreateEntrega(EntregaEntity $entregaEntity):void
     {
-        $this->entrega = $entrega;
+        $entrega = new Entrega();
+        $entrega->entrega_id = $entregaEntity->entrega_id;
+        $entrega->volumes = $entregaEntity->volumes;
+        $entrega->remetente = $entregaEntity->remetente;
+        $entrega->transportadora_id = $entregaEntity->transportadora->transportadora_id;
+        $entrega->destinatario_cpf = $entregaEntity->destinatario->cpf;
+
+        $entrega->save();
+
+        for($index = 0; $index < count($entregaEntity->rastreamentos); $index++)
+        {
+            RastreamentoFacade::CreateRastreamento($entregaEntity->rastreamentos[$index], $entregaEntity->entrega_id);
+        }
     }
 
     public function GetAllEntregas():array
     {
-        return $this->GetAllEntregasFromApi();
+        $this->CheckForNewEntregas();
+        $entregas = Entrega::all();
+        $listaEntregas = array();
+
+        for($index = 0; $index < count($entregas); $index++)
+        {
+            $listaEntregas[$index] = $entregas[$index];
+        }
+
+        return $listaEntregas;
     }
 
-    public function GetEntregaByDestinarioCpf(Destinatario $destinatario):Entrega
+    public function GetEntregaByDestinarioCpf(DestinatarioEntity $destinatario):EntregaEntity
     {
         return $this->entrega;
     }
 
-    private function GetAllEntregasFromApi(): array
+    private function CheckForNewEntregas()
     {
-        try
+        $apiData = ApiConnectionHelper::GetApiData($this->apiUrl);
+
+        if($apiData->code == 200)
         {
-            $guzzleClient = new Client();
-
-            $responseApi = $guzzleClient->get($this->apiUrl);
-            $apiData = json_decode($responseApi->getBody());
-
-            $response = $apiData->data;
+            foreach ($apiData->data as $data)
+            {
+                if($this->ValidateDataFromApi($data))
+                {
+                    $data->_transportadora = TransportadoraFacade::GetTransportadoraByIdTransportadora($data->_id_transportadora);
+                    $this->CreateEntrega(EntregaEntity::ConvertStdClassToEntity($data));
+                }
+            }
         }
-        catch (GuzzleException $exception)
+    }
+
+    private function ValidateDataFromApi(stdClass $apiData):bool
+    {
+        if(empty($apiData->_id)) return false;
+        if(empty($apiData->_volumes) || $apiData->_volumes < 1) return false;
+        if(empty($apiData->_remetente->_nome)) return false;
+        if(empty($apiData->_destinatario->_nome)) return false;
+        if(empty($apiData->_destinatario->_cpf)) return false;
+        if(empty($apiData->_destinatario->_endereco)) return false;
+        if(empty($apiData->_destinatario->_cep)) return false;
+
+        if(!DestinatarioFacade::CheckDestinatarioByCpf($apiData->_destinatario->_cpf))
         {
-            $response = $exception->getMessage();
+            $destinarioEntity = new DestinatarioEntity();
+            $destinarioEntity = $destinarioEntity->ConvertStdClassToEntity($apiData->_destinatario);
+
+            DestinatarioFacade::CreateDestinario($destinarioEntity);
         }
 
-        return $response;
+        if(!TransportadoraFacade::CheckTransportadoraByTransportadoraId($apiData->_id_transportadora)) return false;
+
+        return true;
     }
 }
