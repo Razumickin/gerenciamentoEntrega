@@ -42,8 +42,9 @@ class EntregaService
     public function GetAllEntregas():array
     {
         $this->CheckForNewEntregas();
-        $entregas = Entrega::all();
+
         $listaEntregas = array();
+        $entregas = Entrega::all();
 
         for($index = 0; $index < count($entregas); $index++)
         {
@@ -56,9 +57,20 @@ class EntregaService
         return $listaEntregas;
     }
 
-    public function GetEntregaByDestinarioCpf(string $destinatario_cpf):EntregaEntity
+    public function GetEntregaByDestinarioCpf(string $destinatario_cpf):array
     {
-        return $this->entrega;
+        $listaEntregas = array();
+        $entrega = Entrega::where('destinatario_cpf', '=', $destinatario_cpf)->get();
+
+        for($index = 0; $index < count($entrega); $index++)
+        {
+            $listaEntregas[$index] = EntregaEntity::ConvertModelToEntity($entrega[$index]);
+            $listaEntregas[$index]->destinatario = DestinatarioFacade::GetDestinarioByCpf($entrega[$index]->destinatario_cpf);
+            $listaEntregas[$index]->transportadora = TransportadoraFacade::GetTransportadoraByIdTransportadora($entrega[$index]->transportadora_id);
+            $listaEntregas[$index]->ultimoRastreamento = RastreamentoFacade::GetRastreamentoByEntregaIdOrderByData($entrega[$index]->entrega_id);
+        }
+
+        return $listaEntregas;
     }
 
     public function GetEntregaByEntregaId(string $entrega_id):EntregaEntity

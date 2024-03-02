@@ -30,7 +30,7 @@ class RastreamentoService
     public function GetRastreamentosByEntregaId(string $entrega_id):array
     {
         $listaRastreamentos = array();
-        $rastramentos = Rastreamento::where('entrega_id', '=', $entrega_id)->orderBy('data', 'desc')->get();
+        $rastramentos = Rastreamento::where('entrega_id', '=', $entrega_id)->orderBy('data', 'asc')->get();
 
         for($index = 0; $index < count($rastramentos); $index++)
         {

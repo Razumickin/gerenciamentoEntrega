@@ -20,4 +20,10 @@ class EntregaController extends Controller
         $data = EntregaFacade::GetEntregaByEntregaId($request->route('entrega_id'));
         return response(compact('data'));
     }
+
+    public function filterEntregaByDestinarioCpf(Request $request)
+    {
+        $data = EntregaFacade::GetEntregaByDestinarioCpf($request->post('destinario_cpf'));
+        return response(compact('data'));
+    }
 }

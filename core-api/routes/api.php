@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/deliveries', EntregaController::class);
+Route::post('/deliveries', [EntregaController::class, 'filterEntregaByDestinarioCpf']);
 Route::get('/delivery/{entrega_id}', [EntregaController::class, 'getEntrega']);

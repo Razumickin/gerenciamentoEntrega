@@ -25,7 +25,7 @@ class RastreamentoEntity
         $rastreamentoEntity = new RastreamentoEntity();
 
         $rastreamentoEntity->mensagem = $rastreamento->mensagem;
-        $rastreamentoEntity->data = $rastreamento->data;;
+        $rastreamentoEntity->data = date('d/m/Y h:i:s', strtotime($rastreamento->data));
 
         return $rastreamentoEntity;
     }
