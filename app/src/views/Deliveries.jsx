@@ -11,6 +11,7 @@ import {Link} from "react-router-dom";
 export default function Deliveries(){
     const [entregas, setEntregas] = useState([]);
     const [carregando, setCarregando] = useState(true)
+    const [destinatario_cpf, setDestinatario_cpf] = useState('')
     
     useEffect(() => {
         getEntregas();
@@ -27,17 +28,14 @@ export default function Deliveries(){
         })
     }
 
-    const destinarioCpfRef = useRef(null)
+    const destinarioCpfRef = useRef()
+
     const getEntregasByDestinarioCpf = (ev) => {
         ev.preventDefault()
 
-        const payload = {
-            destinario_cpf: destinarioCpfRef.current.value
-        }
-
         setCarregando(true)
 
-        if(payload.destinario_cpf === '')
+        if(destinatario_cpf === '')
         {
             axiosClient.get('/deliveries')
                 .then(({ data }) => {
@@ -48,9 +46,14 @@ export default function Deliveries(){
                 console.log(response.data.errors);
             })
         }
-        else
+        else if(destinatario_cpf.length === 11)
         {
             setEntregas([])
+
+            const payload = {
+                destinatario_cpf: destinarioCpfRef.current.value
+            }
+
             axiosClient.post('/deliveries', payload)
                 .then(({data}) => {
                     setEntregas(data.data)
@@ -65,8 +68,7 @@ export default function Deliveries(){
     const limparInputDestinatarioCpf = (ev) => {
         ev.preventDefault()
 
-        destinarioCpfRef.current.value = "";
-
+        setDestinatario_cpf('')
         setCarregando(true)
 
         axiosClient.get('/deliveries')
@@ -79,6 +81,15 @@ export default function Deliveries(){
         })
     }
 
+    const validarCpf = (ev) => {
+        const cpfValido = ev.target.value.replace(/\D/g, '');
+
+        if(cpfValido.length < 12)
+        {
+            setDestinatario_cpf(cpfValido);
+        }
+    };
+
     return(
         <div className='row'>
             <form onSubmit={getEntregasByDestinarioCpf}>
@@ -89,7 +100,7 @@ export default function Deliveries(){
                     <div className='col-3 text-end'>
                         <div className='row'>
                             <div className='col-8'>
-                                <input ref={destinarioCpfRef} id='inputDestinatarioCpf' className='form-control'/>
+                                <input ref={destinarioCpfRef} value={destinatario_cpf} onChange={validarCpf} type='text' id='inputDestinatarioCpf' className='form-control'/>
                             </div>
                             <div className='col-2'>
                                 <button onClick={limparInputDestinatarioCpf} type="button" className='btn btn-outline-dark'>

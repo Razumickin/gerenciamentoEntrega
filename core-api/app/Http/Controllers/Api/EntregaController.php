@@ -23,7 +23,7 @@ class EntregaController extends Controller
 
     public function filterEntregaByDestinarioCpf(Request $request)
     {
-        $data = EntregaFacade::GetEntregaByDestinarioCpf($request->post('destinario_cpf'));
+        $data = EntregaFacade::GetEntregaByDestinarioCpf($request->post('destinatario_cpf'));
         return response(compact('data'));
     }
 }
