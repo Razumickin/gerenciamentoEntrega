@@ -73,14 +73,18 @@ class EntregaService
         return $listaEntregas;
     }
 
-    public function GetEntregaByEntregaId(string $entrega_id):EntregaEntity
+    public function GetEntregaByEntregaId(string $entrega_id):?EntregaEntity
     {
+        $entregaEntity = null;
         $entrega = Entrega::where('entrega_id', '=', $entrega_id)->first();
 
-        $entregaEntity = EntregaEntity::ConvertModelToEntity($entrega);
-        $entregaEntity->destinatario = DestinatarioFacade::GetDestinarioByCpf($entrega->destinatario_cpf);
-        $entregaEntity->transportadora = TransportadoraFacade::GetTransportadoraByIdTransportadora($entrega->transportadora_id);
-        $entregaEntity->rastreamentos = RastreamentoFacade::GetRastreamentosByEntregaId($entrega->entrega_id);
+        if($entrega != null)
+        {
+            $entregaEntity = EntregaEntity::ConvertModelToEntity($entrega);
+            $entregaEntity->destinatario = DestinatarioFacade::GetDestinarioByCpf($entrega->destinatario_cpf);
+            $entregaEntity->transportadora = TransportadoraFacade::GetTransportadoraByIdTransportadora($entrega->transportadora_id);
+            $entregaEntity->rastreamentos = RastreamentoFacade::GetRastreamentosByEntregaId($entrega->entrega_id);
+        }
 
         return $entregaEntity;
     }

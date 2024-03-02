@@ -1,8 +1,7 @@
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axiosClient from "../axios-client.js";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEye} from "@fortawesome/free-solid-svg-icons";
+import NotFound from "./NotFound.jsx";
 
 export default function Delivery(){
     const [rastreamentos, setRastreamento] = useState([]);
@@ -25,6 +24,7 @@ export default function Delivery(){
         volumes: '',
         remetente: ''
     });
+    const [entregaNaoEncontrada, setEntregaNaoEncontrada] = useState(false)
 
     let {id} = useParams();
 
@@ -35,10 +35,19 @@ export default function Delivery(){
     const getDelivery = (id) => {
         axiosClient.get(`/delivery/${id}`)
             .then(({data}) => {
-                setDelivery(data.data)
-                setDestinario(data.data.destinatario)
-                setTransportadora(data.data.transportadora)
-                setRastreamento(data.data.rastreamentos)
+                console.log(data.data)
+                if(data.data !== null)
+                {
+                    setDelivery(data.data)
+                    setDestinario(data.data.destinatario)
+                    setTransportadora(data.data.transportadora)
+                    setRastreamento(data.data.rastreamentos)
+                }
+                else
+                {
+                    setEntregaNaoEncontrada(true)
+                }
+
                 setCarregando(false)
             }).catch(error => {
                 const response = error.response
@@ -56,7 +65,7 @@ export default function Delivery(){
                         </div>
                     </p>
             }
-            {!carregando &&
+            {!carregando && !entregaNaoEncontrada &&
                 <div className='row'>
                     <h4>Detalhes da entrega</h4>
                     <hr className='border-3 mb-4'/>
@@ -135,6 +144,9 @@ export default function Delivery(){
                         </table>
                     </div>
                 </div>
+            }
+            {!carregando && entregaNaoEncontrada &&
+                <NotFound />
             }
         </div>
     )

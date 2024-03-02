@@ -141,6 +141,13 @@ export default function Deliveries(){
                             </td>
                         </tr>
                     }
+                    {!carregando && entregas.length === 0 &&
+                        <tr>
+                            <td colSpan='8' className='align-middle text-center'>
+                                Nenhuma entrega encontrada
+                            </td>
+                        </tr>
+                    }
                     {!carregando && entregas.map(del => (
                         <tr key={del.entrega_id}>
                             <td className='align-middle'>{del.destinatario.nome}</td>
