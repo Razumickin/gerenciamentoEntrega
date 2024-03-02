@@ -10,6 +10,7 @@ import {Link} from "react-router-dom";
 
 export default function Deliveries(){
     const [entregas, setEntregas] = useState([]);
+    const [carregando, setCarregando] = useState(true)
     
     useEffect(() => {
         getEntregas();
@@ -19,6 +20,7 @@ export default function Deliveries(){
         axiosClient.get('/deliveries')
             .then(({ data }) => {
                 setEntregas(data.data)
+                setCarregando(false)
             }).catch(error => {
             const response = error.response
             console.log(response.data.errors);
@@ -33,11 +35,14 @@ export default function Deliveries(){
             destinario_cpf: destinarioCpfRef.current.value
         }
 
+        setCarregando(true)
+
         if(payload.destinario_cpf === '')
         {
             axiosClient.get('/deliveries')
                 .then(({ data }) => {
                     setEntregas(data.data)
+                    setCarregando(false)
                 }).catch(error => {
                 const response = error.response
                 console.log(response.data.errors);
@@ -45,16 +50,16 @@ export default function Deliveries(){
         }
         else
         {
+            setEntregas([])
             axiosClient.post('/deliveries', payload)
                 .then(({data}) => {
                     setEntregas(data.data)
-                    console.log(data.data)
+                    setCarregando(false)
                 }).catch(error => {
                 const response = error.response
                 console.log(response.data.errors);
             })
         }
-
     }
 
     const limparInputDestinatarioCpf = (ev) => {
@@ -62,9 +67,12 @@ export default function Deliveries(){
 
         destinarioCpfRef.current.value = "";
 
+        setCarregando(true)
+
         axiosClient.get('/deliveries')
             .then(({ data }) => {
                 setEntregas(data.data)
+                setCarregando(false)
             }).catch(error => {
             const response = error.response
             console.log(response.data.errors);
@@ -112,7 +120,17 @@ export default function Deliveries(){
                 </tr>
                 </thead>
                 <tbody className='border-1'>
-                    {entregas.map(del => (
+                    {carregando &&
+                        <tr>
+                            <td colSpan='8' className='align-middle text-center'>
+                                Carregando entregas...
+                                <div className=" ms-1 spinner-grow spinner-grow-sm" role="status">
+                                    <span className="sr-only">Loading...</span>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    {!carregando && entregas.map(del => (
                         <tr key={del.entrega_id}>
                             <td className='align-middle'>{del.destinatario.nome}</td>
                             <td className='align-middle'>{del.destinatario.cpf}</td>
@@ -121,11 +139,15 @@ export default function Deliveries(){
                             <td className='align-middle'>{del.remetente}</td>
                             <td className='align-middle'>{del.transportadora.fantasia}</td>
                             <td className='align-middle'>{del.ultimoRastreamento.mensagem}</td>
-                            <td className='align-middle'><Link to={'/delivery/' + del.entrega_id}
-                                                               className='btn btn-outline-dark btn-sm'><FontAwesomeIcon
-                                icon={faEye}/></Link></td>
+                            <td className='align-middle'>
+                                <Link to={'/delivery/' + del.entrega_id} className='btn btn-outline-dark btn-sm'>
+                                    <FontAwesomeIcon icon={faEye}/>
+                                </Link>
+                            </td>
                         </tr>
-                    ))}
+                        ))
+                    }
+
                 </tbody>
             </table>
         </div>
